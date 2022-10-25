@@ -5,7 +5,7 @@
 import Search from './Search'
 import Logo from '../img/logo.svg'
 
-const Navbar = () => {
+const Navbar = ({ setUser, setErr, username, setUsername }) => {
   // const { currentUser } = useContext(AuthContext)
 
   return (
@@ -16,7 +16,12 @@ const Navbar = () => {
         <span>{currentUser.displayName}</span>
         <button onClick={() => signOut(auth)}>logout</button>
       </div> */}
-      <Search />
+      <Search
+        setUser={setUser}
+        setErr={setErr}
+        username={username}
+        setUsername={setUsername}
+      />
     </div>
   )
 }
