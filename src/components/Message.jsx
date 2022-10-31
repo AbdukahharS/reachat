@@ -37,7 +37,7 @@ const Message = ({ message }) => {
             <img src={More} alt='Open message menu' onClick={handleClick} />
           </div>
         </div>
-        <MessageMenu uid={uid} className='messageMenu' />
+        <MessageMenu uid={uid} message={message} className='messageMenu' />
       </div>
     </div>
   )
