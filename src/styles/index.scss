@@ -1,0 +1,40 @@
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+$dark100: #0e1621;
+$dark80: #17212b;
+$dark70: #182533;
+$dark60: #1b2734;
+$dark50: #202b36;
+$dark40: #242f3d;
+$dim: #6c7883;
+$prim: #3f96d0;
+$primDark: #2b5278;
+$primDim: #6f9fca;
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+@import 'home', 'auth';
