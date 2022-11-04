@@ -524,19 +524,27 @@ button {
 
           .name {
             font-size: 18px;
+
+            &[contenteditable='true'] {
+              border-bottom: 1px solid $prim;
+              outline: none;
+            }
           }
         }
 
-        .edit {
+        .profileActions {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
           right: 0;
-          font-size: 28px;
-          background-color: transparent;
-          color: $primDim;
-          border: none;
-          cursor: pointer;
+
+          button {
+            font-size: 28px;
+            background-color: transparent;
+            color: $primDim;
+            border: none;
+            cursor: pointer;
+          }
         }
       }
     }
