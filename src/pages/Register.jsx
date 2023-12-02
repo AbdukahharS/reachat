@@ -13,12 +13,17 @@ const Register = () => {
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    setLoading(true)
     e.preventDefault()
+    setLoading(true)
     const displayName = e.target[0].value
     const email = e.target[1].value
     const password = e.target[2].value
     const file = e.target[3].files[0]
+
+    if (!file) {
+      setLoading(false)
+      return setErr('You need to select image for avatar')
+    }
 
     try {
       //Create user
@@ -49,13 +54,14 @@ const Register = () => {
             navigate('/')
           } catch (err) {
             console.log(err)
-            setErr(true)
+            setErr(err.message)
             setLoading(false)
           }
         })
       })
     } catch (err) {
-      setErr(true)
+      console.error(err)
+      setErr(err.message)
       setLoading(false)
     }
   }
@@ -72,14 +78,23 @@ const Register = () => {
           <input required type='text' placeholder='Display name' />
           <input required type='email' placeholder='Email' />
           <input required type='password' placeholder='Password' />
-          <input required style={{ display: 'none' }} type='file' id='file' />
+          <input
+            style={{ display: 'none' }}
+            type='file'
+            id='file'
+            name='file'
+          />
           <label htmlFor='file'>
             <img src={Add} alt='' />
             <span>Add an avatar</span>
           </label>
           <button disabled={loading}>Sign up</button>
-          {loading && 'Uploading and compressing the image please wait...'}
-          {err && <span>Something went wrong</span>}
+          {loading && (
+            <span style={{ color: '#fff' }}>
+              Uploading and compressing the image please wait...
+            </span>
+          )}
+          {err.length && <span style={{ color: '#fff' }}>{err}</span>}
         </form>
         <p>
           You do have an account? <Link to='/login'>Login</Link>

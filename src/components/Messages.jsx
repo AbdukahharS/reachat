@@ -11,8 +11,6 @@ const Messages = () => {
   const messages = context.messages.messages
   const dispatch = context.dispatch
 
-  console.log(messages)
-
   useEffect(() => {
     const unSub = onSnapshot(doc(db, 'chats', data.chatId), (doc) => {
       console.log(doc.data().messages)
